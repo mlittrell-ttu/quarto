@@ -1,0 +1,26 @@
+---
+title: "WebR barebones"
+engine: knitr
+format: live-html
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+A real R session in your browser. Edit the code, then hit **Run Code**.
+
+```{r}
+#| include: false
+# forces knitr/rmarkdown into manifest.json so Connect Cloud installs them
+invisible(1)
+```
+
+```{webr}
+d <- data.frame(
+  x = c(1, 2, 3, 4, 5, 6),
+  y = c(2, 4, 5, 4, 7, 9)
+)
+d
+
+plot(d$x, d$y, pch = 19, col = "steelblue", main = "y vs x")
+abline(lm(y ~ x, data = d), col = "firebrick", lwd = 2)
+```
